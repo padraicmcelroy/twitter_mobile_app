@@ -1,18 +1,19 @@
-  <div class="row-fluid">
+<div class="row-fluid">
     <div class="span12">
       <h2>Tweets</h2>
       <p class="text-info">View a list of your favourite tweets.</p>
     </div>
-
-    <?foreach($tweets as $tweet):?>
-	    <div class="span9">
+</div>
+<?foreach($tweets as $tweet):?>
+	<div class="row-fluid">
+        <div class="span12">
 	    	<div class="well">
 	    		<?=$tweet->tweet?>
+	    		<a class="btn btn-danger pull-right" href="/tweet/delete/<?=$tweet->id?>">Delete</a>
+	    		<div class="clearfix"></div>
 	      	</div>
 		</div>
-		<div class="span2">
-			<a class="btn btn-danger" href="/tweet/delete/<?=$tweet->id?>">Delete</a>
-		</div>
-    <?endforeach;?>  
-  </div>
+     	</div>
+ <?endforeach;?>  
+
 
