@@ -38,7 +38,7 @@
 |
 */
 
-$route['default_controller'] = "twotter";
+$route['default_controller'] = "tweet";
 $route['404_override'] = '';
 
 
