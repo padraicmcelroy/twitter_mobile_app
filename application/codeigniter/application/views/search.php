@@ -17,6 +17,7 @@
 		    	<div class="well">
 		    		<img class="tweet_pic" src="<?=$tweet->profile_image_url_https?>"/>
 		      		<?=$tweet->text?>
+		      		<div class="clearfix"></div>
 		      	</div>
 		    </div>
 		    <div class="span2">
