@@ -5,7 +5,7 @@
           <a class="brand" href="/">Tweetlist</a>
           <ul class="nav">
             <li <?=($active_menu_elem == 'my_tweets')? 'class="active"' :''?>><a href="/">My Tweets</a></li>
-            <li <?=($active_menu_elem == 'search')? 'class="active"' :''?>><a href="/tweet/search">Search</a></li>
+            <li <?=($active_menu_elem == 'search')? 'class="active"' :''?>><a href="/search">Search</a></li>
           </ul>
         </div>
       </div>

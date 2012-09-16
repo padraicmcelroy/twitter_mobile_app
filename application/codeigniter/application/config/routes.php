@@ -40,6 +40,7 @@
 
 $route['default_controller'] = "tweet";
 $route['404_override'] = '';
+$route['search'] = 'tweet/search';
 
 
 /* End of file routes.php */

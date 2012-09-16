@@ -13,18 +13,18 @@
   <?foreach($tweets as $tweet):?>
     <div class="row-fluid">
 	    <div class="span12">
-	    	<div class="span10">
-		    	<div class="well">
-		    		<img class="tweet_pic" src="<?=$tweet->profile_image_url_https?>"/>
-		      		<?=$tweet->text?>
-		      		<div class="clearfix"></div>
-		      	</div>
-		    </div>
-		    <div class="span2">
-	    		<form action="/tweet/add" method="post">
+	    	<div class="span12">
+	    		<form class="well" action="/tweet/add" method="post">
+		    		<div>
+		    			<img class="tweet_pic" src="<?=$tweet->profile_image_url_https?>"/>
+		    			<h4><?=$tweet->from_user?></h4>
+		      			<?=highlight_phrase($tweet->text, $search_term, '<span style="color:#f00">', '</span>')?>
+		      		</div>
 					<input type="hidden" name="tweet" value="<?=$tweet->text?>"/>
-					<input type="submit" class="btn" value="Save"/>
-				</form>
+					<input type="submit" class="btn btn-success pull-right" value="Save"/>
+					
+		      		<div class="clearfix"></div>
+		      	</form>
 		    </div>
 		</div>
   	</div>
