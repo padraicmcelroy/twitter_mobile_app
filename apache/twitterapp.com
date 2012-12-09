@@ -1,4 +1,4 @@
 <VirtualHost *:80>
-	DocumentRoot /www/twitter_mobile_app/application/public
+	DocumentRoot /var/www/twitter_mobile_app/application/public
 	ServerName twitterapp.com
 </VirtualHost>
