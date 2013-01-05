@@ -30,10 +30,11 @@ class TweetModel extends CI_Model {
      * Add a tweets and save it
      *
      */
-    public function add_tweet($tweet){
+    public function add_tweet($tweet, $user_img_url=''){
 
     	$data = array();
     	$data['tweet'] = $tweet;
+	$data['user_img_url'] = $user_img_url;
         $this->db->insert('tweet', $data);
     }
 

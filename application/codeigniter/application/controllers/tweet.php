@@ -88,8 +88,12 @@ class Tweet extends CI_Controller {
 	 * Add a new tweet
 	 *
 	 */
-	public function add(){
-		$this->tweetmodel->add_tweet($this->input->post('tweet'));
+	public function add()
+	{
+		$tweet = $this->input->post('tweet');
+		$user_img_url = $this->input->post('user_img_url');
+
+		$this->tweetmodel->add_tweet($tweet, $user_img_url);
 		redirect('/');
 	}
 

@@ -18,9 +18,10 @@
 		    		<div>
 		    			<img class="tweet_pic" src="<?=$tweet->profile_image_url_https?>"/>
 		    			<h4><?=$tweet->from_user?></h4>
-		      			<?=$tweet->text?>
+		      			<?=highlight_phrase($tweet->text, $search_term, '<span style="color:#990000">', '</span>')?>
 		      		</div>
 					<input type="hidden" name="tweet" value="<?=$tweet->text?>"/>
+					<input type="hidden" name="user_img_url" value="<?=$tweet->profile_image_url_https?>"/>
 					<input type="submit" class="btn btn-success pull-right" value="Save"/>
 					
 		      		<div class="clearfix"></div>
