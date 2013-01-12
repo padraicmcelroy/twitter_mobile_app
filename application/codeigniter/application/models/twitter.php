@@ -6,6 +6,9 @@
  */
 
 class Twitter { 
+
+const apiUrl = 'http://search.twitter.com/search.json';
+
     function __construct() {        
 }
 
@@ -20,8 +23,8 @@ return true;
 
 public function search($search_term=''){
 if($search_term == ''){ return array(); }
-    	$url_safe_search_term = urlencode($search_term);
-    $tweets = json_decode(@file_get_contents('http://search.twitter.com/search.json?q='.$url_safe_search_term));
+    	$urlSafeSearchTerm = urlencode($search_term);
+    $tweets = json_decode(@file_get_contents(self::apiUrl.'?q='.$urlSafeSearchTerm));
     	return $tweets->results;
         }
 
