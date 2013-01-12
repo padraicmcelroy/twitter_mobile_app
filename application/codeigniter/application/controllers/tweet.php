@@ -32,26 +32,24 @@ class Tweet extends Base {
 	 *
 	 */
 	public function search(){
-		// This helper is only used by this "action", so it shouldn't be autoloaded in the contructor.
-		$this->load->helper('text');
-
+		
 		//Tell the menu which button should be active for this action.
 		$this->active_menu_elem = 'search';
 		
 		$search_term = $this->input->post('search');
 
-		//Check for internet access, if there is none load example tweets
 		if($this->twitter->has_internet_access()){
 			$tweets = $this->twitter->search($search_term);
 		}else{
 			$tweets = $this->twitter->get_example_search_result();
 		}
-
-		//prepare the data for the view
+		
 		$data = array(
 			'tweets'=>$tweets,
 			'search_term'=>$search_term
 		);
+
+		$this->load->helper('text');
 
 		$this->display_page_with_view('search', $data);
 	}

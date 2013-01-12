@@ -32,10 +32,19 @@ class TweetModel extends CI_Model {
      */
     public function add_tweet($tweet, $user_img_url=''){
 
-    	$data = array();
-    	$data['tweet'] = $tweet;
-	$data['user_img_url'] = $user_img_url;
-        $this->db->insert('tweet', $data);
+        $this->db->where('tweet', $tweet);
+        $this->db->where('user_img_url', $user_img_url);
+        $old_tweet = $this->db->get('tweet');
+
+        if(!count($old_tweet->result()) > 0){
+            $data = array();
+            $data['tweet'] = $tweet;
+            $data['user_img_url'] = $user_img_url;
+            $this->db->insert('tweet', $data);
+            return true;
+        }else{
+            return false;
+        }
     }
 
     /**
