@@ -10,9 +10,11 @@
             <?if($user):?>
               <li <?=($active_menu_elem == 'search')? 'class="active"' :''?>><a href="/search">Search</a></li>
             <?endif;?>
-          </ul>
+          </ul>          
           <?if($user):?>
-            <span class="pull-right">Hello <?=$user->first_name?> <?=$user->last_name?> | <a href="/auth/logout" class="">Logout</a></span>
+            <div class="user_controls">
+              <span class="pull-right">Hello <?=$user->first_name?> <?=$user->last_name?> | <a href="/auth/logout" class="">Logout</a></span>
+            </div>
           <?else:?>
             <a href="/auth/login" class="btn pull-right">Login</a>
           <?endif;?>

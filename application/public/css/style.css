@@ -16,3 +16,9 @@ img.tweet_pic {
 	background-color: #fff;
 	margin: 0px 10px 10px 0px;
 }
+
+.user_controls {
+	width: 200px;
+	float: right;
+	padding-top: 10px;
+}
