@@ -13,8 +13,7 @@ class Tweet extends Base {
 	 */
 	public function index() {
 
-		//Tell the menu which button should be active for this action.
-		$this->active_menu_elem = 'my_tweets';
+		$this->set_active_menu_element('my_tweets');
 
 		$tweets = $this->tweetmodel->get_all();
 
@@ -33,8 +32,7 @@ class Tweet extends Base {
 	 */
 	public function search(){
 		
-		//Tell the menu which button should be active for this action.
-		$this->active_menu_elem = 'search';
+		$this->set_active_menu_element('search');
 		
 		$search_term = $this->input->post('search');
 
@@ -43,7 +41,7 @@ class Tweet extends Base {
 		}else{
 			$tweets = $this->twitter->get_example_search_result();
 		}
-		
+
 		$data = array(
 			'tweets'=>$tweets,
 			'search_term'=>$search_term

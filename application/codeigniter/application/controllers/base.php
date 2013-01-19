@@ -3,7 +3,7 @@
 class Base extends CI_Controller {
 
 	protected $user;
-	protected $active_menu_elem;
+	private $active_menu_elem;
 
 	/**
 	 * Construct
@@ -26,6 +26,11 @@ class Base extends CI_Controller {
 		}
 
 		$this->load->helper('url');
+	}
+
+	protected function set_active_menu_element($menu_element)
+	{
+		$this->active_menu_elem = $menu_element;
 	}
 
 	protected function display_page_with_view($view, $data)
