@@ -16,7 +16,7 @@ class DatetimeTest extends CIUnit_TestCase
 		$this->date = new Datetime($this->date_string);
 	}
 
-	public function test_create_date_from_string()
+	public function test_format()
 	{
 		$this->assertEquals($this->date_string, $this->date->format('Y-m-d H:i:s'));
 	}
