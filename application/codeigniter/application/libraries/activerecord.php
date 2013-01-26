@@ -27,6 +27,8 @@ class Activerecord {
             }
         } 
         $active_group = ENVIRONMENT;
+
+        //echo $active_group;exit;
         
         // Initialize ActiveRecord
         ActiveRecord\Config::initialize(function($cfg) use ($dsn, $active_group){

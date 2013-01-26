@@ -38,9 +38,9 @@
 |
 */
 
-$route['default_controller'] = "tweet";
+$route['default_controller'] = "tweets";
 $route['404_override'] = '';
-$route['search'] = 'tweet/search';
+$route['search'] = 'tweets/search';
 
 
 /* End of file routes.php */
