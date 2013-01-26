@@ -10,7 +10,7 @@
 	    	<div class="well">
 			<img class="tweet_pic" src="<?=$tweet->user_img_url?>"/>
 	    		<?=$tweet->tweet?>
-	    		<a class="btn btn-danger pull-right" href="/tweet/delete/<?=$tweet->id?>">Delete</a>
+	    		<a class="btn btn-danger pull-right" href="/tweets/delete/<?=$tweet->id?>">Delete</a>
 	    		<div class="clearfix"></div>
 	      	</div>
 		</div>
