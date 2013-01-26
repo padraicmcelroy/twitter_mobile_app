@@ -3,14 +3,10 @@
 /**
  * @group Model
  */
-
 class TweetModelTest extends CIUnit_TestCase
 {
 	public function setUp()
 	{
-		parent::tearDown();
-		parent::setUp();
-
 		$this->CI->db->query('DELETE FROM tweet');
 
 		$this->CI->load->model('tweetmodel');
@@ -52,7 +48,7 @@ class TweetModelTest extends CIUnit_TestCase
 		$this->assertEquals(1, $count_tweets);
 	}
 
-	public function test_is_saved_when_no_tweet()
+	public function test_is_saved()
 	{
 		$tweet = 'a';
 		$user_img_url = 'url';
