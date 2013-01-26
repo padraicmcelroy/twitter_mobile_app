@@ -17,7 +17,7 @@ class Base extends CI_Controller {
 		parent::__construct();
 
 		$this->load->model('twitter');
-		$this->load->model('tweetmodel');		
+		$this->load->model('tweet');		
 		$this->load->library('ion_auth');
 
 		if($this->ion_auth->logged_in())

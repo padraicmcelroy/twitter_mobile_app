@@ -15,7 +15,7 @@ class Tweet extends Base {
 
 		$this->set_active_menu_element('my_tweets');
 
-		$tweets = $this->tweetmodel->get_all();
+		$tweets = Tweet::all();
 
 		$data = array(
 			'tweets'=>$tweets
@@ -60,10 +60,11 @@ class Tweet extends Base {
 	 */
 	public function add()
 	{
-		$tweet = $this->input->post('tweet');
-		$user_img_url = $this->input->post('user_img_url');
+		$tweet = new Tweet();
+		$tweet->tweet = $this->input->post('tweet');
+		$tweet->user_img_url = $this->input->post('user_img_url');
+		$tweet->save();
 
-		$this->tweetmodel->add_tweet($tweet, $user_img_url);
 		redirect('/');
 	}
 
@@ -74,7 +75,8 @@ class Tweet extends Base {
 	 *
 	 */
 	public function delete($tweet_id){
-		$this->tweetmodel->delete_tweet($tweet_id);
+		$tweet = Tweet::find($tweet_id);
+		$tweet->delete();
 		redirect('/');
 	}
 }
