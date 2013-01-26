@@ -15,7 +15,7 @@ class Tweets extends Base {
 
 		$this->set_active_menu_element('my_tweets');
 
-		$tweets = Tweet::all();
+		$tweets = array();
 
 		$data = array(
 			'tweets'=>$tweets
@@ -79,8 +79,7 @@ class Tweets extends Base {
 	 *
 	 */
 	public function delete($tweet_id){
-		$tweet = Tweet::find($tweet_id);
-		$tweet->delete();
+	
 		redirect('/');
 	}
 }
