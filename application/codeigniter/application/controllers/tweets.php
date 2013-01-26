@@ -88,11 +88,8 @@ class Tweets extends Base {
 	{
 		$comment = new Comment();
 		$comment->text = $this->input->post('comment');
-
-		$tweet = Tweet::find($tweet_id);
-		$tweet->comments[] = $comment;
-
-		$tweet->save();
+		$comment->tweet_id = $tweet_id;
+		$comment->save();
 
 		redirect('/');
 	}
