@@ -16,6 +16,7 @@ class Tweets extends Base {
 		$this->set_active_menu_element('my_tweets');
 
 		$tweets = array();
+		$tweets = Tweet::all();
 
 		$data = array(
 			'tweets'=>$tweets
@@ -80,6 +81,19 @@ class Tweets extends Base {
 	 */
 	public function delete($tweet_id){
 	
+		redirect('/');
+	}
+
+	public function add_comment($tweet_id)
+	{
+		$comment = new Comment();
+		$comment->text = $this->input->post('comment');
+
+		$tweet = Tweet::find($tweet_id);
+		$tweet->comments[] = $comment;
+
+		$tweet->save();
+
 		redirect('/');
 	}
 }

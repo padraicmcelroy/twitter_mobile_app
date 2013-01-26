@@ -7,7 +7,7 @@ class Tweet extends ActiveRecord\Model
     static $table_name = 'tweet';
 
     static $has_many = array(
-        array('comment')
+        array('comments')
     );
 
     static $before_save = array('check_if_duplicate');

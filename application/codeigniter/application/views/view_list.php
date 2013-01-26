@@ -12,6 +12,16 @@
 	    		<?=$tweet->tweet?>
 	    		<a class="btn btn-danger pull-right" href="/tweets/delete/<?=$tweet->id?>">Delete</a>
 	    		<div class="clearfix"></div>
+	    		<?if(isset($tweet->comments):?>
+	    			<?foreach($tweet->comments as $comment):?>
+	    				<?=$comment->text?>
+	    				<hr/>
+	    			<?endforeach;?>
+	    			<form action="/tweets/add_comment/<?=$tweet->id?>" method="post" >
+	    				<textarea name="comment"></textarea>
+	    				<input type="submit" value="Save Comment"/>
+	    			</form>
+	    		<?endif;?>
 	      	</div>
 		</div>
      	</div>
