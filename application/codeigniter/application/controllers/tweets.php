@@ -16,7 +16,6 @@ class Tweets extends Base {
 		$this->set_active_menu_element('my_tweets');
 
 		$tweets = array();
-		$tweets = Tweet::all();
 
 		$data = array(
 			'tweets'=>$tweets
