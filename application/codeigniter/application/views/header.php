@@ -13,6 +13,22 @@
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
 <link rel="stylesheet" href="/css/style.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript">
+
+$(function()
+{
+	$('#facebook_page_view').click( function(e)
+	{
+		e.preventDefault();
+		var page = $("#facebook_page").val();
+		$("#facebook_page_form").attr('action', page);
+		$("#facebook_page_form")[0].submit();
+
+	});
+});
+
+</script>
 </head>
 <body>
 <div class="frame">

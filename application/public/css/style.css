@@ -41,3 +41,8 @@ img.tweet_pic {
 	padding-top: 10px;
 	margin-bottom: 0px;
 }
+
+.facebook_page {
+	display: inline-block;
+	padding-right: 10px;
+}

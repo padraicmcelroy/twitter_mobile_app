@@ -15,7 +15,7 @@ class Tweets extends Base {
 
 		$this->set_active_menu_element('my_tweets');
 
-		$tweets = array();
+		$tweets = Tweet::find('all', array('order' => 'id desc'));
 
 		$data = array(
 			'tweets'=>$tweets
@@ -36,14 +36,12 @@ class Tweets extends Base {
 		
 		$search_term = $this->input->post('search');
 
-		if($this->twitter->has_internet_access()){
-			$tweets = $this->twitter->search($search_term);
-		}else{
-			$tweets = $this->twitter->get_example_search_result();
-		}
+		$tweets = Twitter::search($search_term);
+		$facebook_pages = Facebook::search_pages($search_term);
 
 		$data = array(
 			'tweets'=>$tweets,
+			'facebook_pages'=>$facebook_pages,
 			'search_term'=>$search_term
 		);
 
@@ -78,8 +76,10 @@ class Tweets extends Base {
 	 * Delete a saved tweet
 	 *
 	 */
-	public function delete($tweet_id){
-	
+	public function delete($tweet_id)
+	{
+		$tweet = Tweet::find($tweet_id);
+		$tweet->delete();
 		redirect('/');
 	}
 
