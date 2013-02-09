@@ -5,6 +5,8 @@
  * Try to fix the indenation and lines
  */
 
+class TwitterException extends Exception {}
+
 class Twitter { 
 
     const apiUrl = 'http://search.twitter.com/search.json';
@@ -22,7 +24,7 @@ class Twitter {
     {
         if($search_term == '')
         { 
-            return array(); 
+            throw new TwitterException("The searchterm cannot be blank");
         }
     	$url_safe_search_term = urlencode($search_term);
         $tweets = json_decode(@file_get_contents(self::apiUrl.'?q='.$url_safe_search_term));

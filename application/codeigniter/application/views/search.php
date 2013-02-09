@@ -35,6 +35,8 @@
 		    			<img class="tweet_pic" src="<?=$tweet->profile_image_url_https?>"/>
 		    			<h4><?=$tweet->from_user?></h4>
 		      			<?=highlight_phrase($tweet->text, $search_term, '<span style="color:#990000">', '</span>')?>
+		      			<br/>
+		      			<i><?=substr($tweet->created_at, 0, 25)?></i>
 		      		</div>
 					<input type="hidden" name="tweet" value="<?=$tweet->text?>"/>
 					<input type="hidden" name="user_img_url" value="<?=$tweet->profile_image_url_https?>"/>

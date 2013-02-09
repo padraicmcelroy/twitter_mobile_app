@@ -31,7 +31,7 @@ class Base extends CI_Controller {
 		$this->active_menu_elem = $menu_element;
 	}
 
-	protected function display_page_with_view($view, $data)
+	protected function display_page_with_view($view, $data=array())
 	{
 		$menu_data = array(
 			'active_menu_elem'=>$this->active_menu_elem,
@@ -42,5 +42,12 @@ class Base extends CI_Controller {
 	    $this->load->view('menu', $menu_data);
 	    $this->load->view($view, $data);
 	    $this->load->view('footer');
+	}
+
+	protected function append_error_message($error)
+	{
+		$errors = $this->session->flashdata('errors');
+		$errors[] = $error;
+		$this->session->set_flashdata('errors', $errors);
 	}
 }

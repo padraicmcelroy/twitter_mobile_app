@@ -22,3 +22,15 @@
       </div>
     </div>
   </div> 
+  <div class="row-fluid">
+      <div class="span12">
+      <?$errors = $this->session->flashdata('errors');?>
+      <?if(is_array($errors)):?>
+        <div class="alert alert-error">
+          <?foreach($errors as $error):?>
+            <?=$error?>
+          <?endforeach;?>
+        </div>
+      <?endif;?>
+    </div>
+  </div>

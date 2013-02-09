@@ -34,20 +34,44 @@ class Tweets extends Base {
 		
 		$this->set_active_menu_element('search');
 		
-		$search_term = $this->input->post('search');
-
-		$tweets = Twitter::search($search_term);
-		$facebook_pages = Facebook::search_pages($search_term);
-
 		$data = array(
-			'tweets'=>$tweets,
-			'facebook_pages'=>$facebook_pages,
-			'search_term'=>$search_term
+			'tweets'=>array(),
+			'facebook_pages'=>array(),
+			'search_term'=>''
 		);
 
-		$this->load->helper('text');
+		if($this->is_user_searching())
+		{
+			try{
+				$search_term = $this->input->post('search');
 
+				$tweets = Twitter::search($search_term);
+				$facebook_pages = Facebook::search_pages($search_term);
+			}
+			catch(Exception $e)
+			{
+				$this->append_error_message($e->getMessage());
+				redirect('/search');
+			}
+
+			$data = array(
+				'tweets'=>$tweets,
+				'facebook_pages'=>$facebook_pages,
+				'search_term'=>$search_term
+			);
+		}
+
+		$this->load->helper('text');
 		$this->display_page_with_view('search', $data);
+	}
+
+	private function is_user_searching()
+	{
+		if($this->input->post('search') === false)
+		{
+			return false;
+		}
+		return true;
 	}
 
 	/**

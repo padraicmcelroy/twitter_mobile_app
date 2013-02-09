@@ -6,9 +6,16 @@ class Facebook {
 	{
 		$url_safe_search_term = urlencode($search_term);
 		
-		$url = ""; //This is the broken part
+		$url = "https://graph.facebook.com/search?q=$url_safe_search_term&type=page"; //This is the broken part
 
-		$json_string = @file_get_contents($url);
+		try{
+			$json_string = file_get_contents($url);
+		}
+		catch(Exception $e)
+		{
+			$json_string = '';
+		}
+		
 		$result = json_decode($json_string);
 		if(isset($result->data))
 		{
