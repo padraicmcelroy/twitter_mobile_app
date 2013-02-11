@@ -5,7 +5,7 @@
  * Try to fix the indenation and lines
  */
 
-class TwitterException extends Exception {}
+class TwitterException extends InputException { }
 
 class Twitter { 
 
@@ -24,10 +24,10 @@ class Twitter {
     {
         if($search_term == '')
         { 
-            throw new TwitterException("The searchterm cannot be blank");
+            throw new InputException("The searchterm cannot be blank");
         }
     	$url_safe_search_term = urlencode($search_term);
-        $tweets = json_decode(@file_get_contents(self::apiUrl.'?q='.$url_safe_search_term));
+        $tweets = json_decode(@file_get_contents(self::apiUrl.'?q='.$url_safe_search_term.'&lang=en'));
     	return $tweets->results;
     }
 

@@ -1,0 +1,3 @@
+<?
+
+class InputException extends Exception {}

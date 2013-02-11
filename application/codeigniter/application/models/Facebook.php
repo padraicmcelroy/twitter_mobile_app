@@ -1,5 +1,7 @@
 <?
 
+class FacebookException extends InputException {}
+
 class Facebook { 
 
 	public static function search_pages($search_term)
@@ -11,9 +13,9 @@ class Facebook {
 		try{
 			$json_string = file_get_contents($url);
 		}
-		catch(Exception $e)
+		catch(ErrorException $e)
 		{
-			$json_string = '';
+			throw new FacebookException("Search term cannot be blank");
 		}
 		
 		$result = json_decode($json_string);

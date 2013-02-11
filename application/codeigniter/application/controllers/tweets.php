@@ -48,7 +48,7 @@ class Tweets extends Base {
 				$tweets = Twitter::search($search_term);
 				$facebook_pages = Facebook::search_pages($search_term);
 			}
-			catch(Exception $e)
+			catch(InputException $e)
 			{
 				$this->append_error_message($e->getMessage());
 				redirect('/search');
@@ -113,7 +113,7 @@ class Tweets extends Base {
 		$comment->text = $this->input->post('comment');
 		$comment->tweet_id = $tweet_id;
 		$comment->save();
-
+	
 		redirect('/');
 	}
 }
