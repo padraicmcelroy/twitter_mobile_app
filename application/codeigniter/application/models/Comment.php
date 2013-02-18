@@ -9,8 +9,4 @@ class Comment extends LoudActiveRecord
     static $belongs_to = array(
         array('tweet')
     );
-
-    static $validates_presence_of = array(
-		array('text')
-	);
 }

@@ -110,18 +110,10 @@ class Tweets extends Base {
 
 	public function add_comment($tweet_id)
 	{
-		try 
-		{
-			$comment = new Comment();
-			$comment->text = $this->input->post('comment');
-			$comment->tweet_id = $tweet_id;
-			$comment->save();
-		}
-		catch(LoudActiveRecordException $e)
-		{
-			$errors = $e->model->errors->full_messages();
-			$this->append_error_message($errors[0]);
-		}
+		$comment = new Comment();
+		$comment->text = $this->input->post('comment');
+		$comment->tweet_id = $tweet_id;
+		$comment->save();
 	
 		redirect('/');
 	}
