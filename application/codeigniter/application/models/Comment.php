@@ -1,5 +1,7 @@
 <?
 
+class CommentException extends Exception {}
+
 class Comment extends LoudActiveRecord
 {
     static $table_name = 'comment';
@@ -8,9 +10,7 @@ class Comment extends LoudActiveRecord
         array('tweet')
     );
 
-    public function set_text($text)
-    {
-    	//put in logic to throw an error if $text is blank
-    	$this->assign_attribute('text', $text);
-    }
+    static $validates_presence_of = array(
+		array('text')
+	);
 }

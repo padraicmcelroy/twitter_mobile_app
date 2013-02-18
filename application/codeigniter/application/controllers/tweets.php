@@ -30,7 +30,8 @@ class Tweets extends Base {
 	 * Search twitter for tweets mentioning a keyword
 	 *
 	 */
-	public function search(){
+	public function search()
+	{
 		
 		$this->set_active_menu_element('search');
 		
@@ -109,10 +110,18 @@ class Tweets extends Base {
 
 	public function add_comment($tweet_id)
 	{
-		$comment = new Comment();
-		$comment->text = $this->input->post('comment');
-		$comment->tweet_id = $tweet_id;
-		$comment->save();
+		try 
+		{
+			$comment = new Comment();
+			$comment->text = $this->input->post('comment');
+			$comment->tweet_id = $tweet_id;
+			$comment->save();
+		}
+		catch(LoudActiveRecordException $e)
+		{
+			$errors = $e->model->errors->full_messages();
+			$this->append_error_message($errors[0]);
+		}
 	
 		redirect('/');
 	}
